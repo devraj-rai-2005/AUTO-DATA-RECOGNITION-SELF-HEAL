@@ -1,0 +1,9 @@
+## 🛠️ Technology Decisions & Why
+
+| Technology / Decision | Why |
+|---|---|
+| **ADK 1.x (e.g. 1.36.x)** over 2.x graph engine | Has the exact primitives required — Sequential/Parallel/Loop, Sessions, State, Callbacks, Artifacts, `LongRunningFunctionTool` + `ResumabilityConfig`. It is also the more mature line, meaning fewer surprises for a solo 15-day build. |
+| **SSE** instead of WebSockets for status streaming | The stream is one-directional (server → client status updates). Approvals are handled through a simple POST endpoint instead of the same socket. This deliberately avoids unnecessary bidirectional state-sync complexity and sidesteps the current ADK resume-while-streaming rough edge. |
+| **Postgres** for both app data and ADK sessions | `DatabaseSessionService` can use Postgres directly. This means the Sessions + State requirement and audit store live in the same database instead of two systems that need synchronization. A thin `incidents` table is still useful for clean API queries, derived from session events rather than acting as a parallel source of truth. |
+| **DuckDB** only for the sandbox | Provides zero-infrastructure, in-memory or file-based execution that can be easily cloned and discarded for every dry run. This provides better isolation than running a second Postgres instance per incident. |
+| **Redis** as a job queue only (v1) | Decouples failure detection from long-running agent execution, allowing the API to respond immediately with a job ID. Redis Pub/Sub can be added later for SSE fan-out if scaling requires it. For a demo, a single FastAPI process can broadcast SSE updates in memory without unnecessary infrastructure. |

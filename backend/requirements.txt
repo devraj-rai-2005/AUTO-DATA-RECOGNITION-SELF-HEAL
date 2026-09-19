@@ -1,0 +1,36 @@
+# --- Agent framework (PINNED — do not loosen this one) ---
+# google-adk 2.0 introduced breaking changes to the agent API, event model,
+# and session schema. Every agent in this project uses the 1.x API
+# (LlmAgent, SequentialAgent, ParallelAgent, output_schema/output_key,
+# before_agent_callback/after_agent_callback). Do not upgrade past 1.x
+# without rewriting the agent layer against the 2.0 Agent/Workflow API.
+
+google-adk
+google-genai
+
+# --- Web framework ---
+fastapi
+uvicorn[standard]
+sse-starlette
+slowapi
+
+# --- Database ---
+sqlalchemy[asyncio]
+asyncpg
+psycopg2-binary
+alembic
+duckdb
+
+# --- Async job queue ---
+redis
+arq
+
+# --- Schemas / config ---
+pydantic
+pydantic-settings
+python-dotenv
+
+# --- Dev / testing (optional: split into requirements-dev.txt if preferred) ---
+pytest
+pytest-asyncio
+httpx

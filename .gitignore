@@ -1,0 +1,108 @@
+# ==============================
+# Environment & Secrets (CRITICAL)
+# ==============================
+.env
+*.env
+
+# ==============================
+# OS & Editor Specific
+# ==============================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VS Code & JetBrains
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# ==============================
+# Data & Uploads Storage
+# ==============================
+# Ignore runtime and test data files inside data/ but track the directory
+data/uploads/*
+data/artifacts/*
+data/cache/*
+data/*.sqlite
+data/*.db
+data/*.pdf
+data/*.docx
+!data/uploads/.gitkeep
+!data/artifacts/.gitkeep
+
+# ==============================
+# Python / Backend
+# ==============================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+nosetests.xml
+coverage.xml
+*.cover
+
+# ==============================
+# Node / Frontend (Next.js / React)
+# ==============================
+frontend/node_modules/
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Next.js Build Output
+frontend/.next/
+.next/
+frontend/out/
+out/
+frontend/build/
+
+# Next.js telemetry / bundle analysis
+.next/cache/
+*.tsbuildinfo
+next-env.d.ts
+
+# ==============================
+# Docker & Database Volumes
+# ==============================
+# If database volumes/data are dumped to files locally
+pgdata/
+redisdata/
+*.log
+docker-compose.override.yml

@@ -1,0 +1,24 @@
+[project]
+name = "pipeline-healer-backend"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "google-adk>=1.36.0",
+    "google-genai",
+    "fastapi",
+    "uvicorn[standard]",
+    "sse-starlette",
+    "sqlalchemy[asyncio]",
+    "asyncpg",
+    "psycopg2-binary",
+    "alembic",
+    "duckdb",
+    "redis",
+    "arq",
+    "pydantic",
+    "pydantic-settings",
+    "python-dotenv",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-asyncio", "httpx"]
